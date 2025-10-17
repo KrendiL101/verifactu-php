@@ -546,8 +546,8 @@ class InvoiceSerializer
         $obligadoEmision = $newDoc->createElementNS(self::SF_NAMESPACE, 'sf:ObligadoEmision');
         $cabecera->appendChild($obligadoEmision);
         // Orden según schema PersonaFisicaJuridicaESType: NombreRazon, NIF
-        $obligadoEmision->appendChild($newDoc->createElementNS(self::SF_NAMESPACE, 'sf:NombreRazon', (string) $name));
-        $obligadoEmision->appendChild($newDoc->createElementNS(self::SF_NAMESPACE, 'sf:NIF', (string) $nif));
+        $obligadoEmision->appendChild($newDoc->createElementNS(self::SF_NAMESPACE, 'sf:NombreRazon', $name));
+        $obligadoEmision->appendChild($newDoc->createElementNS(self::SF_NAMESPACE, 'sf:NIF', $nif));
 
 
 //        $remReq = $newDoc->createElementNS(self::SF_NAMESPACE, 'sf:RemisionRequerimiento');

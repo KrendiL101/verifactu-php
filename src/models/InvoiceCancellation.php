@@ -41,6 +41,12 @@ class InvoiceCancellation extends InvoiceRecord
     private $generatorData;
 
     /**
+     * Issuer name (NombreRazon, optional).
+     * @var string|null
+     */
+    public $issuerName;
+
+    /**
      * Get the generator data.
      * @return LegalPerson|null
      */

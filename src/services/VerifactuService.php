@@ -201,7 +201,7 @@ TXT
         // Get the issuer information for the Cabecera
         $invoiceId = $cancellation->getInvoiceId();
         $nif = $invoiceId->issuerNif;
-        $name = "Obligado Tributario"; // Placeholder for cancellations
+        $name = $cancellation->issuerName;
         
         // Wrap the XML with the proper structure using InvoiceSerializer
         $wrappedDom = InvoiceSerializer::wrapXmlWithRegFactuStructure($cancellationDom, $nif, $name);

@@ -282,6 +282,7 @@ $computerSystem->setProviderId($provider);
 $cancellation->setSystemInfo($computerSystem);
 
 // Set other required fields
+$cancellation->issuerName = 'Empresa Ejemplo SL';
 $cancellation->recordTimestamp = '2024-07-01T12:00:00+02:00'; // Date and time with timezone
 $cancellation->hashType = HashType::SHA_256;
 $cancellation->hash = '1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef'; // Calculated hash
