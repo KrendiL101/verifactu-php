@@ -125,6 +125,7 @@ use eseperio\verifactu\models\enums\InvoiceType;
 use eseperio\verifactu\models\enums\TaxType;
 use eseperio\verifactu\models\enums\YesNoType;
 use eseperio\verifactu\models\enums\HashType;
+use eseperio\verifactu\models\enums\RegimeType;
 use eseperio\verifactu\models\enums\OperationQualificationType;
 
 // After calling Verifactu::config(...)
@@ -151,6 +152,7 @@ $invoice->invoiceWithoutRecipient = YesNoType::NO;
 $breakdown = new Breakdown();
 $detail = new BreakdownDetail();
 $detail->taxType = TaxType::IVA;
+$detail->regimeKey = RegimeType::C01;
 $detail->taxRate = 21.00;
 $detail->taxableBase = 100.00; 
 $detail->taxAmount = 21.00;
