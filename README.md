@@ -136,7 +136,7 @@ $invoice = new InvoiceSubmission();
 $invoiceId = new InvoiceId();
 $invoiceId->issuerNif = 'B12345678';
 $invoiceId->seriesNumber = 'FA2024/001';
-$invoiceId->issueDate = '2024-07-01';
+$invoiceId->issueDate = '01-07-2024';
 $invoice->setInvoiceId($invoiceId);
 
 // Set basic invoice data
@@ -196,7 +196,7 @@ $invoice->hashType = HashType::SHA_256;
 $invoice->hash = '1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef'; // Calculated hash
 
 // Optional fields
-$invoice->operationDate = '2024-07-01'; // Operation date
+$invoice->operationDate = '01-07-2024'; // Operation date
 $invoice->externalRef = 'REF123'; // External reference
 $invoice->simplifiedInvoice = YesNoType::NO; // Not a simplified invoice
 $invoice->invoiceWithoutRecipient = YesNoType::NO; // Has identified recipient
@@ -251,7 +251,7 @@ $cancellation = new InvoiceCancellation();
 $invoiceId = new InvoiceId();
 $invoiceId->issuerNif = 'B12345678';
 $invoiceId->seriesNumber = 'FA2024/001';
-$invoiceId->issueDate = '2024-07-01';
+$invoiceId->issueDate = '01-07-2024';
 $cancellation->setInvoiceId($invoiceId);
 
 // Set chaining data (using object-oriented approach)
