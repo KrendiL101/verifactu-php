@@ -115,13 +115,13 @@ class QrGeneratorService
         $nif = $invoiceId->issuerNif;
         $series = $invoiceId->seriesNumber;
         $date = $invoiceId->issueDate;
-        $hash = $record->hash;
+        $importe = number_format($record->totalAmount, 2, '.', '');
 
         $params = http_build_query([
             'nif' => $nif,
-            'num' => $series,
+            'numserie' => $series,
             'fecha' => $date,
-            'huella' => $hash,
+            'importe' => $importe,
         ]);
 
         return rtrim($baseVerificationUrl, '?') . '?' . $params;
