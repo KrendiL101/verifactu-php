@@ -100,16 +100,16 @@ class ReadmeExamplesTest extends TestCase
         $invoice->addRecipient($recipient);
 
         // Validate the invoice before submission
-        $validationResult = $invoice->validate();
+        $errors = $invoice->validate();
 
         // If validation fails, output the errors for debugging
-        if (!empty($validationResult)) {
-            $this->fail('Invoice validation failed: ' . print_r($validationResult, true));
+        if (!empty($errors)) {
+            $this->fail('Invoice validation failed: ' . print_r($errors, true));
         }
 
         // Assertions to verify the example works
-        $this->assertIsArray($validationResult);
-        $this->assertEmpty($validationResult, 'Invoice validation should pass');
+        $this->assertIsArray($errors);
+        $this->assertEmpty($errors, 'Invoice validation should pass');
         $this->assertInstanceOf(InvoiceId::class, $invoice->getInvoiceId());
         $this->assertEquals('B12345678', $invoice->getInvoiceId()->issuerNif);
         $this->assertEquals('FA2024/001', $invoice->getInvoiceId()->seriesNumber);
@@ -180,16 +180,16 @@ class ReadmeExamplesTest extends TestCase
         $cancellation->externalRef = 'REF-CANCEL-123'; // External reference
 
         // Validate the cancellation before submission
-        $validationResult = $cancellation->validate();
+        $errors = $cancellation->validate();
 
         // If validation fails, output the errors for debugging
-        if (!empty($validationResult)) {
-            $this->fail('Cancellation validation failed: ' . print_r($validationResult, true));
+        if (!empty($errors)) {
+            $this->fail('Cancellation validation failed: ' . print_r($errors, true));
         }
 
         // Assertions to verify the example works
-        $this->assertIsArray($validationResult);
-        $this->assertEmpty($validationResult, 'Cancellation validation should pass');
+        $this->assertIsArray($errors);
+        $this->assertEmpty($errors, 'Cancellation validation should pass');
         $this->assertInstanceOf(InvoiceId::class, $cancellation->getInvoiceId());
         $this->assertEquals('B12345678', $cancellation->getInvoiceId()->issuerNif);
         $this->assertEquals('FA2024/001', $cancellation->getInvoiceId()->seriesNumber);

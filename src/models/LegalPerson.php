@@ -53,7 +53,7 @@ class LegalPerson extends Model
             $otherIDModel->id = $otherId['id'] ?? null;
             $this->otherId = $otherIDModel;
         } else {
-            $errors= $otherId->validate();
+            $errors = $otherId->validate();
             if(!empty($errors)){
                 throw new \Exception(json_encode($errors));
             }

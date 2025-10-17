@@ -24,10 +24,10 @@ class EventDispatcherService
     public static function dispatch(EventRecord $event, array $config)
     {
         // 1. Validate event
-        $validation = $event->validate();
+        $errors = $event->validate();
 
-        if (!empty($validation)) {
-            throw new \InvalidArgumentException('EventRecord validation failed: ' . print_r($validation, true));
+        if (!empty($errors)) {
+            throw new \InvalidArgumentException('EventRecord validation failed: ' . print_r($errors, true));
         }
 
         // 2. Serialize event to XML

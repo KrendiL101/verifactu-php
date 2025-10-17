@@ -93,19 +93,19 @@ class VerifactuService
     public static function registerInvoice(InvoiceSubmission $invoice)
     {
         // 1. Validate input (excluding hash which will be generated)
-        $validation = $invoice->validate();
+        $errors = $invoice->validate();
 
-        if (!empty($validation)) {
-            throw new \InvalidArgumentException('InvoiceSubmission validation failed: ' . print_r($validation, true));
+        if (!empty($errors)) {
+            throw new \InvalidArgumentException('InvoiceSubmission validation failed: ' . print_r($errors, true));
         }
 
         $invoice->hash = HashGeneratorService::generate($invoice);
 
         // 3. Final validation including hash
-        $finalValidation = $invoice->validate();
+        $finalErrors = $invoice->validate();
 
-        if (!empty($finalValidation)) {
-            throw new \InvalidArgumentException('InvoiceSubmission final validation failed: ' . print_r($finalValidation, true));
+        if (!empty($finalErrors)) {
+            throw new \InvalidArgumentException('InvoiceSubmission final validation failed: ' . print_r($finalErrors, true));
         }
 
         // 3. Get the RegistroAlta XML from the invoice using InvoiceSerializer
@@ -179,20 +179,20 @@ TXT
     public static function cancelInvoice(InvoiceCancellation $cancellation)
     {
         // 1. Validate input (excluding hash which will be generated)
-        $validation = $cancellation->validate();
+        $errors = $cancellation->validate();
 
-        if (!empty($validation)) {
-            throw new \InvalidArgumentException('InvoiceCancellation validation failed: ' . print_r($validation, true));
+        if (!empty($errors)) {
+            throw new \InvalidArgumentException('InvoiceCancellation validation failed: ' . print_r($errors, true));
         }
 
         // 2. Generate hash (huella)
         $cancellation->hash = HashGeneratorService::generate($cancellation);
 
         // 3. Final validation including hash
-        $finalValidation = $cancellation->validate();
+        $finalErrors = $cancellation->validate();
 
-        if (!empty($finalValidation)) {
-            throw new \InvalidArgumentException('InvoiceCancellation final validation failed: ' . print_r($finalValidation, true));
+        if (!empty($finalErrors)) {
+            throw new \InvalidArgumentException('InvoiceCancellation final validation failed: ' . print_r($finalErrors, true));
         }
         
         // Get the RegistroAnulacion XML from the cancellation using InvoiceSerializer
@@ -235,10 +235,10 @@ TXT
      */
     public static function queryInvoices(InvoiceQuery $query)
     {
-        $validation = $query->validate();
+        $errors = $query->validate();
 
-        if (!empty($validation)) {
-            throw new \InvalidArgumentException('InvoiceQuery validation failed: ' . print_r($validation, true));
+        if (!empty($errors)) {
+            throw new \InvalidArgumentException('InvoiceQuery validation failed: ' . print_r($errors, true));
         }
         
         // Get the XML from the query using InvoiceSerializer

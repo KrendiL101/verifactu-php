@@ -120,10 +120,10 @@ class Breakdown extends Model
                         return 'All details must be instances of BreakdownDetail.';
                     }
 
-                    $validation = $detail->validate();
+                    $errors = $detail->validate();
 
-                    if (!empty($validation)) {
-                        return 'Invalid breakdown detail: ' . json_encode($validation);
+                    if (!empty($errors)) {
+                        return 'Invalid breakdown detail: ' . json_encode($errors);
                     }
                 }
 
